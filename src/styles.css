@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+.wrapper {
+    margin-top: 60px;
+}
+
+.row,
+.col-lg-12,
+.ui-panel {
+    margin-bottom: 15px;
+}
+
+.navbar-inverse {
+    background-color: #222d32 !important;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    background-color: #222d32;
+}
+
+.ui-datatable thead th,
+.ui-datatable tfoot td {
+    text-align: left !important;
+}
+
+.margin-left {
+    margin-left: 10px;
+}

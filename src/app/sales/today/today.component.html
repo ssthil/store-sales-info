@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-lg-12 pull-right">
+        <button class="btn btn-success pull-right margin-left" (click)="chartViewData()">Chart View</button>
+        <button class="btn btn-default pull-right " (click)="tableViewData()">Table View</button>
+    </div>
+</div>
+<p-panel header="Today -  {{todayDate}}" [hidden]="!tableView">
+    <p-dataTable [value]="salesInfos">
+        <p-column field="card" header="Card"></p-column>
+        <p-column field="retail" header="Retail"></p-column>
+        <p-column field="total" header="Total"></p-column>
+    </p-dataTable>
+</p-panel>
+<p-panel header="Today  -  {{todayDate}}" [hidden]="!chartView">
+    <p-chart type="bar" [data]="todaySales"></p-chart>
+</p-panel>
