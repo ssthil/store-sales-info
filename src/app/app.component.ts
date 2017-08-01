@@ -19,7 +19,7 @@ import { LastSevenDaysComponent } from './sales/last-seven-days/last-seven-days.
       
     }
   `],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None 
 })
 
 export class AppComponent implements OnInit{

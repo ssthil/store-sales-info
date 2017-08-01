@@ -85,7 +85,7 @@ export class TodayDetailComponent implements OnInit {
     let chartLabelValue = this.selectedDateValue;
     let chartCardValue = this.selectedCardValue.map(Number);
     let chartRetailValue = this.selectedRetailValue.map(Number);
-    let chartTotalValue = this.selectedTotalValue.map(Number);
+    let chartTotalValue = this.selectedTotalValue.map(Number); 
     
      /*this.todayDetailSales = {
             labels: chartLabelValue,

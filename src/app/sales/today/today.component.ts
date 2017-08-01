@@ -165,7 +165,7 @@ export class TodayComponent implements OnInit {
                     '<link rel="stylesheet" type="text/css" href="style.css" /></head>'+
                     '<body onload="window.print(); window.close()">' + innerContents + '</html>'
                     );
-        popupWinindow.document.close();
+        popupWinindow.document.close(); 
   }
 
 }

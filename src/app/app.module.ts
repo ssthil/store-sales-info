@@ -14,7 +14,7 @@ import { LastSevenDaysComponent } from './sales/last-seven-days/last-seven-days.
 import { TodayComponent } from './sales/today/today.component';
 import { TodayDetailComponent } from './sales/today-detail/today-detail.component';
 
-declare var require: any;
+declare var require: any; 
 
 @NgModule({
   declarations: [
