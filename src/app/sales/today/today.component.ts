@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild  } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SalesService } from '../../service/sales.service';
+
 
 @Component({
   selector: 'app-today',
   templateUrl: './today.component.html',
-  styleUrls: ['./today.component.css']
+  styleUrls: ['./today.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TodayComponent implements OnInit {
 
@@ -83,8 +85,19 @@ export class TodayComponent implements OnInit {
     let chartCardValue = this.selectedCardValue.map(Number);
     let chartRetailValue = this.selectedRetailValue.map(Number);
     let chartTotalValue = this.selectedTotalValue.map(Number);
+
+    let label = ['Card', 'Retail', 'Total'];
+    let data = [4, 6, 16];
+    let fillData = [];
+
+    for (let i=0; i < label.length; i ++) {
+        fillData.push({
+          name:label[i],
+          y:data[i]
+        })
+    }
     
-     this.todaySales = {
+    /* this.todaySales = {
             labels: chartLabelValue,
             datasets: [
                 {
@@ -106,7 +119,19 @@ export class TodayComponent implements OnInit {
                     data: chartTotalValue
                 }
             ]
-        } 
+     } */
+
+     this.todaySales = {
+        chart: {
+            type: 'pie'
+        },
+        colors:['#DDDF00', '#24CBE5', '#50B432'],
+        series:[
+          {
+            data:fillData
+          }
+        ] 
+     }
   }
   
   formatDate(date) {
@@ -130,6 +155,17 @@ export class TodayComponent implements OnInit {
   chartViewData() {
     this.chartView = true;
     this.tableView = false;
+  }
+  
+  print(event): void {
+    let innerContents = document.querySelector('#todaySales').innerHTML;
+    let popupWinindow = window.open('', '_blank', 'width=auto,height=100%,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head>'+
+                    '<link rel="stylesheet" type="text/css" href="style.css" /></head>'+
+                    '<body onload="window.print(); window.close()">' + innerContents + '</html>'
+                    );
+        popupWinindow.document.close();
   }
 
 }

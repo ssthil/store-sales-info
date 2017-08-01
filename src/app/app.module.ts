@@ -7,10 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SalesService } from './service/sales.service';
 
-import {DataTableModule,SharedModule, ChartModule, PanelModule} from 'primeng/primeng';
+import { ChartModule } from 'angular2-highcharts';
+
+//import {DataTableModule,SharedModule, ChartModule, PanelModule} from 'primeng/primeng';
 import { LastSevenDaysComponent } from './sales/last-seven-days/last-seven-days.component';
 import { TodayComponent } from './sales/today/today.component';
 import { TodayDetailComponent } from './sales/today-detail/today-detail.component';
+
+declare var require: any;
 
 @NgModule({
   declarations: [
@@ -22,10 +26,11 @@ import { TodayDetailComponent } from './sales/today-detail/today-detail.componen
   imports: [
     BrowserModule,
     HttpModule,
-    DataTableModule,
+    ChartModule.forRoot(require('highcharts')),
+   /* DataTableModule,
     SharedModule,
     ChartModule,
-    PanelModule,
+    PanelModule,*/
     HttpClientModule,
     BrowserAnimationsModule
   ],

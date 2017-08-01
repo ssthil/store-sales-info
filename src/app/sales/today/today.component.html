@@ -1,9 +1,19 @@
-<div class="row">
+<div class="row print-btn-section">
     <div class="col-lg-12 pull-right">
+        <button class="btn btn-primary pull-right margin-left" (click)="print($event)">Print</button>
         <button class="btn btn-success pull-right margin-left" (click)="chartViewData()">Chart View</button>
         <button class="btn btn-default pull-right " (click)="tableViewData()">Table View</button>
     </div>
 </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Today -  {{todayDate}}
+    </div>
+    <div class="panel-body">
+        <chart [options]="todaySales" id="todaySales"></chart>
+    </div>
+</div>
+<!-- <div class="print-section" >
 <p-panel header="Today -  {{todayDate}}" [hidden]="!tableView">
     <p-dataTable [value]="salesInfos">
         <p-column field="card" header="Card"></p-column>
@@ -14,3 +24,4 @@
 <p-panel header="Today  -  {{todayDate}}" [hidden]="!chartView">
     <p-chart type="bar" [data]="todaySales"></p-chart>
 </p-panel>
+</div> -->

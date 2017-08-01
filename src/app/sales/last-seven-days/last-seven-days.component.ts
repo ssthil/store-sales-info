@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SalesService } from '../../service/sales.service';
 
@@ -13,7 +13,8 @@ interface SalesResponse {
 @Component({
   selector: 'app-last-seven-days',
   templateUrl: './last-seven-days.component.html',
-  styleUrls: ['./last-seven-days.component.css']
+  styleUrls: ['./last-seven-days.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LastSevenDaysComponent implements OnInit {
 
@@ -35,7 +36,7 @@ export class LastSevenDaysComponent implements OnInit {
 
   ngOnInit() {
     this.getAllData();
-    this.drawChart();
+    //this.drawChart();
   }
 
 
@@ -92,7 +93,7 @@ export class LastSevenDaysComponent implements OnInit {
     let chartRetailValue = this.selectedRetailValue.map(Number);
     let chartTotalValue = this.selectedTotalValue.map(Number);
     
-     this.lastSevenDays = {
+    /*this.lastSevenDays = {
             labels: chartLabelValue,
             datasets: [
                 {
@@ -114,7 +115,43 @@ export class LastSevenDaysComponent implements OnInit {
                     data: chartTotalValue
                 }
             ]
-        } 
+        } */
+    this.lastSevenDays = {
+            title : { text : '' },
+            chart: {
+                type: 'column'
+            },
+            colors: ['#058DC7', '#50B432', '#ED561B'],
+            xAxis: {
+                categories: chartLabelValue,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Card',
+                data: chartCardValue
+
+            }, {
+                name: 'Retail',
+                data: chartRetailValue
+
+            }, {
+                name: 'Total',
+                data: chartTotalValue
+
+            }]
+    }
   }
 
   formatDate(date) {
@@ -137,5 +174,16 @@ export class LastSevenDaysComponent implements OnInit {
   chartViewData() {
     this.chartView = true;
     this.tableView = false;
+  }
+  
+  print(): void {
+    let innerContents = document.querySelector('#lastSevenDays').innerHTML;
+    let popupWinindow = window.open('', '_blank', 'width=auto,height=100%,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head>'+
+                    '<link rel="stylesheet" type="text/css" href="style.css" /></head>'+
+                    '<body onload="window.print(); window.close()">' + innerContents + '</html>'
+                    );
+        popupWinindow.document.close();
   }
 }

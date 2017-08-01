@@ -36,7 +36,7 @@ export class SalesService {
   getTodayDetailSalesData(): Observable<Response> {
     return this.http.get(this.todayDetailDataURL)
       .map((response: Response) => {
-        console.log(response.json().sales)
+        //.log(response.json().sales)
         return response.json().sales
       })
   }

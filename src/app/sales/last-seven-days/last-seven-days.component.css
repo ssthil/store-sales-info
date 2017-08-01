@@ -1,0 +1,7 @@
+chart{
+    width: 100% !important;
+    display:block;
+  }
+.highcharts-credits{
+  display: none;
+}

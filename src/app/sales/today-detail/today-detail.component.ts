@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SalesService } from '../../service/sales.service';
 
 @Component({
   selector: 'app-today-detail',
   templateUrl: './today-detail.component.html',
-  styleUrls: ['./today-detail.component.css']
+  styleUrls: ['./today-detail.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TodayDetailComponent implements OnInit {
 
@@ -28,7 +29,7 @@ export class TodayDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getAllData();
-    this.drawChart();
+    //this.drawChart();
   }
 
 
@@ -86,7 +87,7 @@ export class TodayDetailComponent implements OnInit {
     let chartRetailValue = this.selectedRetailValue.map(Number);
     let chartTotalValue = this.selectedTotalValue.map(Number);
     
-     this.todayDetailSales = {
+     /*this.todayDetailSales = {
             labels: chartLabelValue,
             datasets: [
                 {
@@ -108,7 +109,44 @@ export class TodayDetailComponent implements OnInit {
                     data: chartTotalValue
                 }
             ]
-        } 
+     }*/ 
+
+     this.todayDetailSales = {
+            title : { text : '' },
+            chart: {
+                type: 'column'
+            },
+            colors: ['#24CBE5', '#64E572', '#FF9655'],
+            xAxis: {
+                categories: chartLabelValue,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: ''
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Card',
+                data: chartCardValue
+
+            }, {
+                name: 'Retail',
+                data: chartRetailValue
+
+            }, {
+                name: 'Total',
+                data: chartTotalValue
+
+            }]
+    }
   }
 
   formatTime(date) {
@@ -139,6 +177,21 @@ export class TodayDetailComponent implements OnInit {
   chartViewData() {
     this.chartView = true;
     this.tableView = false;
+  }
+  
+  print(event): void {
+    let target = event.target || event.srcElement || event.currentTarget;
+    let idAttr = target.attributes.id;
+    let value = idAttr.nodeValue;
+    //console.log(value);
+    let innerContents = document.querySelector('#todayDetailSales').innerHTML;
+    let popupWinindow = window.open('', '_blank', 'width=auto,height=100%,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head>'+
+                    '<link rel="stylesheet" type="text/css" href="style.css" /></head>'+
+                    '<body onload="window.print(); window.close()">' + innerContents + '</html>'
+                    );
+        popupWinindow.document.close();
   }
 
 }
