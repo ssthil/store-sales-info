@@ -5,23 +5,22 @@
         <button class="btn btn-default pull-right " (click)="tableViewData()">Table View</button>
     </div>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-default" [hidden]="!chartView">
     <div class="panel-heading">
         Today -  {{todayDate}}
     </div>
     <div class="panel-body">
-        <chart [options]="todaySales" id="todaySales"></chart>
+        <chart [options]="todaySales" id="todaySalesChart"></chart>
     </div>
 </div>
-<!-- <div class="print-section" >
-<p-panel header="Today -  {{todayDate}}" [hidden]="!tableView">
+
+<p-panel header="Today -  {{todayDate}}" [hidden]="!tableView" id="todaySalesTable">
     <p-dataTable [value]="salesInfos">
         <p-column field="card" header="Card"></p-column>
         <p-column field="retail" header="Retail"></p-column>
         <p-column field="total" header="Total"></p-column>
     </p-dataTable>
 </p-panel>
-<p-panel header="Today  -  {{todayDate}}" [hidden]="!chartView">
+<!-- <p-panel header="Today  -  {{todayDate}}" [hidden]="!chartView">
     <p-chart type="bar" [data]="todaySales"></p-chart>
-</p-panel>
-</div> --> 
+</p-panel> -->

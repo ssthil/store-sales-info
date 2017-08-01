@@ -28,3 +28,90 @@
 .margin-left {
     margin-left: 10px;
 }
+
+@media print {
+    .panel-default {
+        border: 0;
+    }
+    .panel-heading {
+        border-bottom: 0;
+    }
+    .print-btn-section {
+        display: none;
+    }
+    .ui-widget {
+        font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
+        font-size: 1em;
+    }
+    .ui-widget-content {
+        border: 1px solid #D5D5D5;
+        background: #ffffff;
+        color: #222222;
+    }
+    .ui-widget-header {
+        background: #f6f7f9 0 0 repeat-x;
+        background: linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+    }
+    .ui-datatable table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+    }
+    .ui-state-default {
+        border: 1px solid #d6d6d6;
+        background: #ffffff;
+        color: #555555;
+    }
+    .ui-datatable .ui-datatable-thead>tr>th,
+    .ui-datatable .ui-datatable-tfoot>tr>td,
+    .ui-datatable .ui-datatable-data>tr>td {
+        border-color: inherit;
+        box-sizing: border-box;
+        padding: .25em .5em;
+        border-width: 1px;
+        border-style: solid;
+    }
+    .ui-panel .ui-panel-content {
+        border: 0;
+        background: 0;
+        padding: .5em .75em;
+    }
+    .ui-datatable {
+        position: relative;
+    }
+    .ui-widget,
+    .ui-widget * {
+        box-sizing: border-box;
+    }
+    .ui-widget-content {
+        border: 1px solid #D5D5D5;
+        background: #ffffff;
+        color: #222222;
+    }
+    .ui-panel.ui-widget .ui-panel-titlebar {
+        border-width: 0 0 1px 0;
+    }
+    .ui-panel .ui-panel-titlebar {
+        padding: .5em .75em;
+    }
+    .ui-datatable tbody > tr.ui-widget-content {
+        border-color: #d9d9d9;
+    }
+    .ui-datatable .ui-datatable-thead>tr>th,
+    .ui-datatable .ui-datatable-tfoot>tr>td,
+    .ui-datatable .ui-datatable-data>tr>td {
+        border-color: inherit;
+        box-sizing: border-box;
+        padding: .25em .5em;
+        border-width: 1px;
+        border-style: solid;
+    }
+    .ui-datatable th.ui-state-default {
+        background: #ebedf0;
+    }
+    .ui-datatable thead th,
+    .ui-datatable tfoot td {
+        text-align: left !important;
+    }
+}
+  

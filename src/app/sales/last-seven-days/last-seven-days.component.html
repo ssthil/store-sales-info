@@ -5,23 +5,23 @@
         <button class="btn btn-default pull-right" (click)="tableViewData()">Table View</button>
     </div>
 </div>
-<div class="panel panel-default">
+<div class="panel panel-default" [hidden]="!chartView">
     <div class="panel-heading">
         Last Seven Days
     </div>
     <div class="panel-body">
-        <chart [options]="lastSevenDays" id="lastSevenDays"></chart>
+        <chart [options]="lastSevenDays" id="lastSevenDaysChart"></chart>
     </div>
 </div>
-<!-- <div class="print-section" >
-<p-panel header="Last Seven Days" [hidden]="!tableView">
+<!-- <div class="print-section" >-->
+<p-panel header="Last Seven Days" [hidden]="!tableView" id="lastSevenDaysTable">
     <p-dataTable [value]="salesInfos">
         <p-column field="card" header="Card"></p-column>
         <p-column field="retail" header="Retail"></p-column>
         <p-column field="total" header="Total"></p-column>
     </p-dataTable>
 </p-panel>
-<p-panel header="Last Seven Days" [hidden]="!chartView">
+<!--<p-panel header="Last Seven Days" [hidden]="!chartView">
     <p-chart type="bar" [data]="lastSevenDays"></p-chart>
 </p-panel>
 </div> -->

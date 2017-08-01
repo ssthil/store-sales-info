@@ -179,19 +179,30 @@ export class TodayDetailComponent implements OnInit {
     this.tableView = false;
   }
   
-  print(event): void {
-    let target = event.target || event.srcElement || event.currentTarget;
-    let idAttr = target.attributes.id;
-    let value = idAttr.nodeValue;
-    //console.log(value);
-    let innerContents = document.querySelector('#todayDetailSales').innerHTML;
-    let popupWinindow = window.open('', '_blank', 'width=auto,height=100%,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+  print(): void {
+    if (this.chartView === true) {
+        let innerContents = document.querySelector('#todayDetailSalesChart').innerHTML;
+        let popupWinindow = window.open('', '_blank', 'width=auto,height=100%,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
         popupWinindow.document.open();
         popupWinindow.document.write('<html><head>'+
                     '<link rel="stylesheet" type="text/css" href="style.css" /></head>'+
                     '<body onload="window.print(); window.close()">' + innerContents + '</html>'
                     );
         popupWinindow.document.close();
+    } else {
+      let innerContents = document.querySelector('#todayDetailSalesTable').innerHTML;
+      let popupWinindow = window.open('', '_blank', 'width=auto,height=100%,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head>'+
+                    '<style>'+
+                    '@media print{body {-webkit-print-color-adjust: exact;} .panel-default{border:0}.panel-heading{border-bottom:0}.print-btn-section{display:none}.ui-widget{font-family:Roboto,"Trebuchet MS",Arial,Helvetica,sans-serif;font-size:1em}.ui-widget-header{background:transparent}.ui-datatable table{border-collapse:collapse;width:100%;table-layout:fixed}.ui-state-default{border:1px solid #d6d6d6;background:#fff;color:#555}.ui-panel .ui-panel-content{border:0;background:0;padding:.5em .75em}.ui-datatable{position:relative}.ui-widget,.ui-widget *{box-sizing:border-box}.ui-widget-content{border:0px solid #D5D5D5;background:#fff;color:#222}.ui-panel.ui-widget .ui-panel-titlebar{border-width:0 0 1px}.ui-panel .ui-panel-titlebar{padding:.5em .75em}.ui-datatable tbody>tr.ui-widget-content{border-color:#d9d9d9}.ui-datatable .ui-datatable-data>tr>td,.ui-datatable .ui-datatable-tfoot>tr>td,.ui-datatable .ui-datatable-thead>tr>th{border-color:inherit;box-sizing:border-box;padding:.25em .5em;border-width:1px;border-style:solid}.ui-datatable th.ui-state-default{background-color:#ebedf0}.ui-datatable tfoot td,.ui-datatable thead th{text-align:left!important}}'+
+                    '</style>'+
+                    '</head>'+
+                    '<body onload="window.print(); window.close()">' + innerContents + '</html>'
+                    );
+        popupWinindow.document.close();
+    }
+    
   }
 
 }

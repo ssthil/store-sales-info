@@ -10,6 +10,7 @@ import { SalesService } from './service/sales.service';
 import { ChartModule } from 'angular2-highcharts';
 
 //import {DataTableModule,SharedModule, ChartModule, PanelModule} from 'primeng/primeng';
+import {DataTableModule,SharedModule, PanelModule} from 'primeng/primeng';
 import { LastSevenDaysComponent } from './sales/last-seven-days/last-seven-days.component';
 import { TodayComponent } from './sales/today/today.component';
 import { TodayDetailComponent } from './sales/today-detail/today-detail.component';
@@ -27,10 +28,10 @@ declare var require: any;
     BrowserModule,
     HttpModule,
     ChartModule.forRoot(require('highcharts')),
-   /* DataTableModule,
+    DataTableModule,
     SharedModule,
-    ChartModule,
-    PanelModule,*/
+    PanelModule,
+    //ChartModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],
