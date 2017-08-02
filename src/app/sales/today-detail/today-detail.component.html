@@ -1,17 +1,17 @@
 <div class="row print-btn-section">
     <div class="col-lg-12 pull-right">
-        <button class="btn btn-primary pull-right margin-left" id="todayDetailSalesPrint" (click)="print($event)">Print</button>
+        <button class="btn btn-primary pull-right margin-left" id="todayDetailSalesPrint" (click)="print()">Print</button>
         <button class="btn btn-success pull-right margin-left" (click)="chartViewData()">Chart View</button>
         <button class="btn btn-default pull-right" (click)="tableViewData()">Table View</button>
     </div>
 </div>
 <div class="panel panel-default" [hidden]="!chartView">
     <div class="panel-heading">
-       Today Details -  {{todayDate}}
+        Today Details - {{todayDate}}
     </div>
     <div class="panel-body">
         <chart [options]="todayDetailSales" id="todayDetailSalesChart"></chart>
-    </div> 
+    </div>
 </div>
 
 <p-panel header="Today Details -  {{todayDate}}" [hidden]="!tableView" id="todayDetailSalesTable">

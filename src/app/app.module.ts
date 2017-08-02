@@ -7,15 +7,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SalesService } from './service/sales.service';
 
-import { ChartModule } from 'angular2-highcharts';
-
 //import {DataTableModule,SharedModule, ChartModule, PanelModule} from 'primeng/primeng';
 import {DataTableModule,SharedModule, PanelModule} from 'primeng/primeng';
 import { LastSevenDaysComponent } from './sales/last-seven-days/last-seven-days.component';
 import { TodayComponent } from './sales/today/today.component';
 import { TodayDetailComponent } from './sales/today-detail/today-detail.component';
 
-declare var require: any; 
+import {ChartModule} from 'angular2-highcharts';
+import {HighchartsStatic} from 'angular2-highcharts/dist/HighchartsService';
+
+declare var require: any;
+export function highchartsFactory() {
+    const hc = require('highcharts/highstock');
+    const dd = require('highcharts/modules/exporting');
+    dd(hc);
+    return hc;
+} 
 
 @NgModule({
   declarations: [
@@ -27,7 +34,7 @@ declare var require: any;
   imports: [
     BrowserModule,
     HttpModule,
-    ChartModule.forRoot(require('highcharts')),
+    ChartModule,
     DataTableModule,
     SharedModule,
     PanelModule,
@@ -35,7 +42,13 @@ declare var require: any;
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [SalesService],
+  providers: [
+    SalesService,
+    {
+		  provide: HighchartsStatic,
+		  useFactory: highchartsFactory
+	  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

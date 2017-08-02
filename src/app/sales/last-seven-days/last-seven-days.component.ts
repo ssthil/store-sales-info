@@ -150,7 +150,10 @@ export class LastSevenDaysComponent implements OnInit {
                 name: 'Total',
                 data: chartTotalValue
 
-            }]
+            }],
+            exporting: {
+                enabled: false
+            }
     }
   }
 

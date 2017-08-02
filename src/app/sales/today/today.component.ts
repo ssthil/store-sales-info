@@ -141,7 +141,10 @@ export class TodayComponent implements OnInit {
           {
             data:fillData
           }
-        ] 
+        ],
+        exporting: {
+                enabled: false
+        }
      }
   }
   
