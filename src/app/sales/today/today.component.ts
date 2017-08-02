@@ -143,8 +143,9 @@ export class TodayComponent implements OnInit {
           }
         ],
         exporting: {
-                enabled: false
+            enabled: false
         }
+
      }
   }
   

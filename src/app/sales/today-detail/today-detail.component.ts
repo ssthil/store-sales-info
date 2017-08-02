@@ -146,6 +146,7 @@ export class TodayDetailComponent implements OnInit {
                 data: chartTotalValue
 
             }],
+
             exporting: {
                 enabled: false
             }

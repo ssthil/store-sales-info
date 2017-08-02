@@ -151,6 +151,7 @@ export class LastSevenDaysComponent implements OnInit {
                 data: chartTotalValue
 
             }],
+
             exporting: {
                 enabled: false
             }
