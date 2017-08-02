@@ -145,7 +145,12 @@ export class TodayDetailComponent implements OnInit {
                 name: 'Total',
                 data: chartTotalValue
 
-            }]
+            }],
+            navigation: {
+              buttonOptions: {
+                  enabled: false
+              }
+            }
     }
   }
 

@@ -141,7 +141,12 @@ export class TodayComponent implements OnInit {
           {
             data:fillData
           }
-        ] 
+        ],
+            navigation: {
+              buttonOptions: {
+                  enabled: false
+              }
+            }
      }
   }
   
